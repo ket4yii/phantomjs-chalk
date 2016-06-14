@@ -1,6 +1,6 @@
 {
   "name": "phantomjs-chalk",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Terminal string styling done right. Much color.",
   "license": "MIT",
   "repository": "ket4yii/phantomjs-chalk",
