@@ -1,7 +1,6 @@
 'use strict';
 var escapeStringRegexp = require('escape-string-regexp');
 var ansiStyles = require('ansi-styles');
-var supportsColor = require('supports-color');
 var defineProps = Object.defineProperties;
 var term = '';
 var platform = '';
@@ -35,6 +34,7 @@ switch (scriptRunner) {
                 throw new Error('Can\'t figure out script runner');
 }
 
+var supportsColor = scriptRunner === 'phantomjs' ? undefined : require('supports-color');
 var isSimpleWindowsTerm = platform === 'win32' && !/^xterm/i.test(term);
 
 function Chalk(options) {
