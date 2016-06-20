@@ -34,7 +34,11 @@ switch (scriptRunner) {
                 throw new Error('Can\'t figure out script runner');
 }
 
-var supportsColor = scriptRunner === 'phantomjs' ? undefined : require('supports-color');
+var supportsColor = scriptRunner === 'phantomjs' ? (function () {
+       if (/^screen|^xterm|^vt100|color|ansi|cygwin|linux/i.test(term)) {
+               return true;
+       }
+})() : require('supports-color');
 var isSimpleWindowsTerm = platform === 'win32' && !/^xterm/i.test(term);
 
 function Chalk(options) {
